@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="CardinalL.views.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CardinalL.views"
+             mc:Ignorable="d" 
+                      d:DesignHeight="450" d:DesignWidth="800" Background="#2B2C2C">
+    <Grid>
+        <TabControl TabStripPlacement="Left" Background="#2B2C2C">
+            <TabItem Header="Profile" FontSize="20" Background="#2B2C2C" Foreground="AliceBlue">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <DockPanel Grid.Column="0" Grid.Row="0">
+                        <Button DockPanel.Dock="Bottom" Margin="5" >Load new Avatar</Button>
+                        <Image DockPanel.Dock="Top" Margin="20"></Image>
+                    </DockPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Margin="15">
+                        <TextBlock>User Name:</TextBlock>
+                        <TextBlock>someuser</TextBlock>
+                        <TextBlock>Password:</TextBlock>
+                        <TextBlock>somePass</TextBlock>
+                        <TextBlock>Your email:</TextBlock>
+                        <TextBlock>user@mail</TextBlock>
+                        <Button>Change</Button>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="1" Margin="15">
+                        <TextBlock>Friends:</TextBlock>
+                        <TextBlock>countFreands</TextBlock>
+                        <TextBlock>Date of birthday:</TextBlock>
+                        <TextBlock>00.00.0000</TextBlock>
+                    </StackPanel>
+                </Grid>
+            </TabItem >
+            <TabItem Header="Friends" FontSize="20" Background="#2B2C2C" Foreground="AliceBlue">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.255*"/>
+                        <RowDefinition />
+                        <RowDefinition Height="0.15*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Margin="15" Background="#c1c1be"></TextBlock>
+                    <ListBox Grid.Row="1" Grid.ColumnSpan="3" Margin="5"></ListBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Chats" FontSize="20" Background="#2B2C2C" Foreground="AliceBlue">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.18*"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Margin="15" Background="#c1c1be"></TextBlock>
+                    <ListBox Grid.Row="1" Grid.ColumnSpan="3" Margin="10"></ListBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Settings" FontSize="20" Background="#2B2C2C" Foreground="AliceBlue">
+                <Grid>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="ExitButton" Margin="20,378,734,10" RenderTransformOrigin="0.556,0.52">Exit</Button>
+    </Grid>
+</UserControl>
