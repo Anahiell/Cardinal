@@ -21,8 +21,8 @@ namespace CardinalL.Data.Entityes
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var config = JsonSerializer.Deserialize<JsonNode>(File.ReadAllText("CardinalPconfig.json"));
-            string? connectionString = config?["databases"]?["planetScale"]?["connectionString"]?.ToString();
+            var config = JsonSerializer.Deserialize<JsonNode>(File.ReadAllText("CardiConfig.json"));
+            string? connectionString = config?["databases"]?["connectionString"]?.ToString();
             optionsBuilder.UseMySql(
                 connectionString,
                 new MySqlServerVersion(new Version(8, 0, 34))

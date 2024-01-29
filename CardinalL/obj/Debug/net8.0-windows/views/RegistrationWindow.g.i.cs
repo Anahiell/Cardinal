@@ -125,7 +125,7 @@ namespace CardinalL.views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CardinalL;V1.0.0.0;component/views/registrationwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CardinalL;component/views/registrationwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\views\RegistrationWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

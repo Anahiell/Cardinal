@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CardinalL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a34230ee165af2711810bcfd516efba48d82a98a")]
 [assembly: System.Reflection.AssemblyProductAttribute("CardinalL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CardinalL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,8 +1,4 @@
-﻿
-using CardinalL.Data.Entityes;
-using CardinalProj.Data;
-using CardinalProj.Views;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,7 +9,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-namespace CardinalProj
+using CardinalL.Data.Entityes;
+using CardinalL.views;
+namespace CardinalL
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -47,6 +45,7 @@ namespace CardinalProj
         private void ShowUserProfileInterface()
         {
             // Создайте экземпляр HomePage
+            
             UserPage homePage = new UserPage();
 
             // Замените текущий контент главного окна на HomePage
