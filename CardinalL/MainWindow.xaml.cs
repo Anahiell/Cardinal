@@ -34,7 +34,12 @@ namespace CardinalL
             if (dataContext.AuthenticateUser(usernameOrEmail, password))
             {
                 // Если аутентификация успешна, отобразить интерфейс пользователя
-                ShowUserProfileInterface();
+                int userId = dataContext.GetUserIdByUsernameOrEmail(usernameOrEmail); 
+
+                if (userId != -1)
+                {
+                    ShowUserProfileInterface(userId);
+                }
             }
             else
             {
@@ -42,25 +47,21 @@ namespace CardinalL
                 MessageBox.Show("Invalid username/email or password. Please try again.");
             }
         }
-        private void ShowUserProfileInterface()
+        private void ShowUserProfileInterface(int userID)
         {
-            // Создайте экземпляр HomePage
-            
-            UserPage homePage = new UserPage();
+         
+            UserPage userPage = new UserPage(userID);
 
-            // Замените текущий контент главного окна на HomePage
-            this.Content = homePage;
+            this.Content = userPage;
         }
         private void Button_Click_SingUp(object sender, RoutedEventArgs e)
         {
-            // Заблокируйте главное окно
             this.IsEnabled = false;
 
-            // Создайте и откройте новое модальное окно для регистрации
             RegistrationWindow registrationWindow = new RegistrationWindow(dataContext);
             registrationWindow.ShowDialog();
 
-            // После завершения регистрации разблокируйте главное окно
+            // После завершения регистрации разблокир главное окно
             this.IsEnabled = true;
         }
     }

@@ -13,9 +13,14 @@ namespace CardinalL.Data.Entityes
         [Key]
         [Column("UserChatId")]
         public int UserChatId { get; set; }
-        [Column("ChatBoxId")]
-        public int UserId { get; set; }
 
+        [ForeignKey("ChatBox")]
+        [Column("ChatId")]
         public int ChatId { get; set; }
+        public ChatBox ChatBox { get; set; }
+
+        // Внешний ключ для связи с таблицей User
+        [ForeignKey("UserId")]
+        public User User { get; set; }
     }
 }

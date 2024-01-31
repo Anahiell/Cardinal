@@ -1,5 +1,10 @@
-﻿using System;
+﻿using CardinalL.Data.Entityes;
+using CardinalL.DataService;
+using CardinalL.views.ViewModels;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +25,40 @@ namespace CardinalL.views
     /// </summary>
     public partial class UserPage : UserControl
     {
-        public UserPage()
+        private UserViewModel userViewModel;
+        private int userId;
+        private DataContext dataContext;
+        private List<FriendViewModel> friendsList;
+        private DataServ dataServ;
+
+        public UserPage(int userID)
         {
             InitializeComponent();
+            userViewModel = new UserViewModel();
+            this.userId = userID;
+            this.dataContext = new DataContext();
+            dataServ = new DataServ(dataContext);
+
+            // Загрузка профиля при открытии страницы
+            _ = LoadUserProfileDataAsync();
+            MessageBox.Show($"{userID}");
         }
+
+        private async Task LoadUserProfileDataAsync()
+        {
+            userViewModel = await dataServ.LoadUserProfileDataAsync(userId);
+            // Обновите биндинги или другие элементы управления согласно вашей логике
+        }
+
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            string searchTerm = searchingTextBox.Text;
+        }
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Ваш код обработки изменения выбранной вкладки
+        }
+
     }
 }

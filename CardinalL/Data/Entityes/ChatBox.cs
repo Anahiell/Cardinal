@@ -11,8 +11,13 @@ namespace CardinalL.Data.Entityes
     public class ChatBox
     {
         [Key]
-        [Column("ChatBoxId")]
         public int ChatId { get; set; }
         public string ChatName { get; set; }
+
+        // Навигационное свойство для сообщений в чате
+        public ICollection<Message> Messages { get; set; }
+
+        // Навигационное свойство для связи с пользователями в чате
+        public ICollection<UserChat> UserChats { get; set; }
     }
 }

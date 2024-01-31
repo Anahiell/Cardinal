@@ -1,0 +1,13 @@
+{
+  "databases": {
+    "connectionString": "Data Source=WIN-0DQRGQQBOJ7\\MSSQLSERVER01;Initial Catalog=Cardi;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False"
+  },
+  "emails": {
+    "gmail": {
+      "host": "smtp.gmail.com",
+      "port": "587",
+      "mailbox": "yevgrafdev@gmail.com",
+      "key": "wmvhbjhdxfbslolq"
+    }
+  }
+}

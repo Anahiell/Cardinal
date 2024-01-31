@@ -14,14 +14,18 @@ namespace CardinalL.Data.Entityes
         [Column("id")]
         public int FriendshipId { get; set; }
 
-        // Идентификатор первого пользователя в дружбе
-        [Column("user1_id")]
+        [ForeignKey("User1Id")]
+        public User User1 { get; set; }
+
+        [Column("user1id")]
         public int User1Id { get; set; }
 
-        // Идентификатор второго пользователя в дружбе
-        [Column("user2_id")]
+        [ForeignKey("User2Id")]
+        public User User2 { get; set; }
+
+        [Column("user2id")]
         public int User2Id { get; set; }
-        // Статус дружбы (например, "Друзья", "В ожидании", "Заблокировано" и т. д.)
+
         public string Status { get; set; }
     }
 }

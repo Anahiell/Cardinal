@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
                       d:DesignHeight="450" d:DesignWidth="800" Background="#2B2C2C">
     <Grid>
-        <TabControl TabStripPlacement="Left" Background="#2B2C2C">
+        <TabControl TabStripPlacement="Left" Background="#2B2C2C" SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="Profile" FontSize="20" Background="#2B2C2C" Foreground="AliceBlue">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -22,15 +22,15 @@
                     </Grid.RowDefinitions>
                     <DockPanel Grid.Column="0" Grid.Row="0">
                         <Button DockPanel.Dock="Bottom" Margin="5" >Load new Avatar</Button>
-                        <Image DockPanel.Dock="Top" Margin="20"></Image>
+                        <Image DockPanel.Dock="Top" Margin="5" Source="{Binding AvatarImage}" Stretch ="Fill"></Image>
                     </DockPanel>
                     <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Margin="15">
                         <TextBlock>User Name:</TextBlock>
-                        <TextBlock>someuser</TextBlock>
+                        <TextBlock Text="{Binding Name}"></TextBlock>
                         <TextBlock>Password:</TextBlock>
-                        <TextBlock>somePass</TextBlock>
+                        <TextBlock Text="{Binding Password}"></TextBlock>
                         <TextBlock>Your email:</TextBlock>
-                        <TextBlock>user@mail</TextBlock>
+                        <TextBlock Text="{Binding Email}">user@mail</TextBlock>
                         <Button>Change</Button>
                     </StackPanel>
                     <StackPanel Grid.Row="0" Grid.Column="1" Margin="15">
@@ -39,9 +39,15 @@
                         <TextBlock>Date of birthday:</TextBlock>
                         <TextBlock>00.00.0000</TextBlock>
                     </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="1" Margin="15">
+                        <TextBlock>Login:</TextBlock>
+                        <TextBlock Text="{Binding Login}"></TextBlock>
+                        <TextBlock>Phone:</TextBlock>
+                        <TextBlock Text="{Binding Phone}"></TextBlock>
+                    </StackPanel>
                 </Grid>
             </TabItem >
-            <TabItem Header="Friends" FontSize="20" Background="#2B2C2C" Foreground="AliceBlue">
+            <TabItem Header="Friends" FontSize="20" Background="#2B2C2C" Foreground="AliceBlue" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -53,8 +59,21 @@
                         <RowDefinition />
                         <RowDefinition Height="0.15*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Margin="15" Background="#c1c1be"></TextBlock>
-                    <ListBox Grid.Row="1" Grid.ColumnSpan="3" Margin="5"></ListBox>
+                    <TextBox x:Name="searchingTextBox"  Grid.Row="0" Grid.ColumnSpan="2" Margin="15,15,24,15" Background="#c1c1be"></TextBox>
+                    <Button Content="Search" Grid.Column="2" Grid.Row="0" Margin="5,15,5,15" Click="SearchButton_Click" ></Button>
+                    <ListBox x:Name="friendsListBox" Grid.Row="1" Grid.ColumnSpan="3" Margin="5" ItemsSource="{Binding Friends}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding AvatarImage}" Width="50" Height="50" Margin="0,0,10,0"/>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding Login}" Foreground="Gray"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </Grid>
             </TabItem>
             <TabItem Header="Chats" FontSize="20" Background="#2B2C2C" Foreground="AliceBlue">

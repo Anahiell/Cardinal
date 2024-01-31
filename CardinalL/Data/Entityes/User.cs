@@ -24,5 +24,7 @@ namespace CardinalL.Data.Entityes
         // Свойство для хранения данных изображения аватара
         public byte[]? AvatarData { get; set; }
 
+        // Навигационное свойство для хранения списка друзей
+        public virtual ICollection<Friend> Friends { get; set; } = new List<Friend>();
     }
 }
