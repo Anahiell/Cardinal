@@ -26,5 +26,6 @@ namespace CardinalL.Data.Entityes
 
         // Навигационное свойство для хранения списка друзей
         public virtual ICollection<Friend> Friends { get; set; } = new List<Friend>();
+        public ICollection<UserChat> UserChats { get; set; }
     }
 }

@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CardinalL.Data.Entityes;
-using CardinalL.views;
+using CardinalL.Views;
 namespace CardinalL
 {
     /// <summary>
@@ -49,9 +49,7 @@ namespace CardinalL
         }
         private void ShowUserProfileInterface(int userID)
         {
-         
             UserPage userPage = new UserPage(userID);
-
             this.Content = userPage;
         }
         private void Button_Click_SingUp(object sender, RoutedEventArgs e)

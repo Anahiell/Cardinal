@@ -1,10 +1,10 @@
 ﻿using CardinalL.Data.Entityes;
-using CardinalL.DataService;
-using CardinalL.views.ViewModels;
+using CardinalL.ViewModel;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,47 +18,80 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CardinalL.views
+namespace CardinalL.Views
 {
-    /// <summary>
-    /// Interaction logic for UserControl1.xaml
-    /// </summary>
     public partial class UserPage : UserControl
     {
-        private UserViewModel userViewModel;
-        private int userId;
-        private DataContext dataContext;
-        private List<FriendViewModel> friendsList;
-        private DataServ dataServ;
+        public UserPageViewModel viewModel;
 
-        public UserPage(int userID)
+        private int selectedChatId;
+        public int UserId { get; set; }
+
+        public UserPage(int userId)
         {
+            this.UserId = userId;
             InitializeComponent();
-            userViewModel = new UserViewModel();
-            this.userId = userID;
-            this.dataContext = new DataContext();
-            dataServ = new DataServ(dataContext);
 
-            // Загрузка профиля при открытии страницы
-            _ = LoadUserProfileDataAsync();
-            MessageBox.Show($"{userID}");
+            viewModel = new UserPageViewModel();
+            DataContext = viewModel;
+
+            LoadChatListAsync();
         }
 
-        private async Task LoadUserProfileDataAsync()
+        public async void LoadChatListAsync()
         {
-            userViewModel = await dataServ.LoadUserProfileDataAsync(userId);
-            // Обновите биндинги или другие элементы управления согласно вашей логике
+            using (var context = new DataContext())
+            {
+                var userChats = await context.UserChats.Where(uc => uc.User.Id == UserId).ToListAsync();
+
+                viewModel.Chats = new ObservableCollection<ChatBox>();
+
+                foreach (var userChat in userChats)
+                {
+                    var chat = await context.Chats.FirstOrDefaultAsync(c => c.ChatId == userChat.ChatId);
+                    if (chat != null)
+                    {
+                        viewModel.Chats.Add(chat);
+                    }
+                }
+
+                chatListBox.ItemsSource = viewModel.Chats;
+            }
         }
 
-
-        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        public async Task LoadMessageListAsync()
         {
-            string searchTerm = searchingTextBox.Text;
-        }
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // Ваш код обработки изменения выбранной вкладки
+            using (var context = new DataContext())
+            {
+                viewModel.Messages.Clear();
+
+                if (viewModel.SelectedChatId != 0)
+                {
+                    var newMessages = await context.Messages
+    .Where(message => message.ChatBox.ChatId == viewModel.SelectedChatId)
+    .OrderByDescending(message => message.Timestamp)
+    .ToListAsync();
+
+                    foreach (var newMessage in newMessages)
+                    {
+                        viewModel.Messages.Add(newMessage);
+                    }
+
+                    messageListBox.ItemsSource = viewModel.Messages;
+                }
+            }
         }
 
+        private void ChatListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (chatListBox.SelectedItem is ChatBox selectedChat)
+            {
+                viewModel.SelectedChatId = selectedChat.ChatId;
+
+                MessageBox.Show($"{viewModel.SelectedChatId}");
+                LoadMessageListAsync();
+            }
+        }
     }
 }
+

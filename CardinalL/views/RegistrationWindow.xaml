@@ -1,9 +1,9 @@
-﻿<Window x:Class="CardinalL.views.RegistrationWindow"
+﻿<Window x:Class="CardinalL.Views.RegistrationWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CardinalL.views"
+        xmlns:local="clr-namespace:CardinalL.Views"
         mc:Ignorable="d"
            Title="RegistrationWindow" Height="600" Width="500" ResizeMode="NoResize" Background="#61515D">
     <Grid>

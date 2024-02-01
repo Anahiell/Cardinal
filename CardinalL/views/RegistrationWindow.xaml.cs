@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 using System.IO;
 using CardinalL.Data.Entityes;
 
-namespace CardinalL.views
+namespace CardinalL.Views
 {
     /// <summary>
     /// Interaction logic for RegistrationWindow.xaml

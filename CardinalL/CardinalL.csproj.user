@@ -7,13 +7,13 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="views\RegistrationWindow.xaml.cs">
+    <Compile Update="Views\RegistrationWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="views\CheckRegistrCode.xaml.cs">
+    <Compile Update="Views\CheckRegistrCode.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="views\UserPage.xaml.cs">
+    <Compile Update="Views\UserPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -21,13 +21,13 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="views\RegistrationWindow.xaml">
+    <Page Update="Views\RegistrationWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="views\CheckRegistrCode.xaml">
+    <Page Update="Views\CheckRegistrCode.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="views\UserPage.xaml">
+    <Page Update="Views\UserPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
