@@ -1,9 +1,23 @@
-Название проекта Cardinal Описание проекта: Это десктопное приложение, социальная сеть - мессенджер, подобие телеграмма и ВК. Проект создается как курсовая работа с возможно дальнейшей експлуатацией в других целях.
+#  Cardinal Messenger (Prototype)
 
-Установка: На стадии разработки.
+Cardinal is a desktop messaging app prototype, developed in WPF using C# and Entity Framework Core.  
+The idea was to create a simplified version of a modern messenger, similar to Telegram or VK.
 
-Использование: Фкнуционал на данный момент ограничен в виду разработки, доступна только регистрация и вход, не более...
+This was part of a university course project and an experiment in building a multi-window desktop application with database support.
 
-Настройка: Быои использованы библиотеки скачаные с NutGet, такие как: -Microsoft.EntityFrameworkCore.Tools (v7.0.0) -Microsoft.EntityFrameworkCore (v7.0.0) -Pomelo.EntityFrameworkCore.MySql (v7.0.0)
+##  Implemented Features
+- User registration
+- Login system
+- Early foundation for a chat interface
+- MySQL database integration via Pomelo + EF Core
+- Basic form navigation
 
-Примеры: Телеграмм месенджер и ВКонтакте.(И другие работы Павла Дурова) Контактная информация: anahielitl@gmail.com
+##  Technologies Used
+- C#
+- WPF (.NET 7.0)
+- Entity Framework Core
+- Pomelo MySQL Provider
+
+##  Status
+ **Archived** — early prototype, no longer in development.  
+May be continued or used for reference in the future.
